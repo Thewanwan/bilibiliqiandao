@@ -12,7 +12,7 @@ env:
   Ray_BiliBiliCookies__2: ${{ secrets.COOKIE2 }}
   Ray_BiliBiliCookies__3: ${{ secrets.COOKIE3 }}
   Ray_RunTasks: LiveLottery
-  Ray_Security__RandomSleepMaxMin: '10'
+  Ray_Security__RandomSleepMaxMin: '0'
   Ray_Serilog__WriteTo__0__Args__restrictedToMinimumLevel: Information
 
 jobs:
@@ -23,12 +23,6 @@ jobs:
     steps:
       - name: Set time zone
         run: sudo timedatectl set-timezone 'Asia/Shanghai'
-
-      - name: Random Sleep (5-30 minutes)
-        run: |
-          SLEEP_TIME=$(( RANDOM % 1560 + 300 ))
-          echo "Sleeping for $((SLEEP_TIME/60)) minutes and $((SLEEP_TIME%60)) seconds..."
-          sleep $SLEEP_TIME
 
       - name: Checkout
         uses: actions/checkout@v4
