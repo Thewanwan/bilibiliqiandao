@@ -5,6 +5,7 @@ on:
 
 env:
   ASPNETCORE_ENVIRONMENT: Production
+  HUSKY: 0
   Ray_RunTasks: Login
   Ray_Serilog__WriteTo__0__Args__restrictedToMinimumLevel: Debug
 

@@ -7,6 +7,7 @@ on:
 
 env:
   ASPNETCORE_ENVIRONMENT: Production
+  HUSKY: 0
   Ray_BiliBiliCookies__1: ${{ secrets.COOKIE }}
   Ray_BiliBiliCookies__2: ${{ secrets.COOKIE2 }}
   Ray_BiliBiliCookies__3: ${{ secrets.COOKIE3 }}
