@@ -1,0 +1,33 @@
+name: BiliBili Login
+
+on:
+  workflow_dispatch:
+
+env:
+  ASPNETCORE_ENVIRONMENT: Production
+  Ray_RunTasks: Login
+  Ray_Serilog__WriteTo__0__Args__restrictedToMinimumLevel: Debug
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore -c Release
+
+      - name: Run Login Task
+        run: |
+          cd ./src/Ray.BiliBiliTool.Console
+          dotnet run -c Release --runTasks=Login
